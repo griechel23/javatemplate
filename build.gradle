@@ -16,7 +16,7 @@ sourceSets {
     }
 }
 
-mainClassName = 'com.testdb.FileDbMain'
+mainClassName = 'com.griechel.restservice.MyApplication'
 
 buildscript {
     repositories {

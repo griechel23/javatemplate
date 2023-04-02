@@ -1,5 +1,7 @@
-package com.testdb.resources;
+package com.griechel.restservice.resources;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
@@ -8,7 +10,8 @@ public class PingResource {
 
     private final String response;
 
-    public PingResource(String response) {
+    @Inject
+    public PingResource(@Named("pingResponse") String response) {
         this.response = response;
     }
     @GET

@@ -1,20 +1,20 @@
-package com.testdb.config;
+package com.griechel.restservice;
 
 import io.dropwizard.Configuration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ServiceConfiguration extends Configuration {
+public class MyServiceConfiguration extends Configuration {
 
     private String test;
 
     @JsonProperty
-    public void setTest(String test) {
+    public void setPingResponse(String test) {
         this.test = test;
     }
 
     @JsonProperty
-    public String getTest() {
+    public String getPingResponse() {
         return test;
     }
 }
