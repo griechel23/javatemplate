@@ -1,6 +1,6 @@
-plugins {
-    id 'java'
-}
+apply plugin: 'java'
+apply plugin: 'gradle-one-jar'
+apply plugin: 'application'
 
 group 'org.example'
 version '1.0-SNAPSHOT'
@@ -15,6 +15,25 @@ sourceSets {
         }
     }
 }
+
+mainClassName = 'com.griechel.restservice.MyApplication'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.github.rholder:gradle-one-jar:1.0.4'
+    }
+}
+
+// Configure the run task to start the Dropwizard service
+run {
+    args 'server', './src/dist/config/configuration.yml'
+
+}
+
 dependencies {
     def immutablesVersion = "2.8.2"
     annotationProcessor "org.immutables:value:$immutablesVersion"
@@ -26,4 +45,6 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.assertj:assertj-core:3.11.1'
+
+    implementation "io.dropwizard:dropwizard-core:2.1.5"
 }
