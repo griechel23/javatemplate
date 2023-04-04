@@ -47,4 +47,5 @@ dependencies {
     testImplementation 'org.assertj:assertj-core:3.11.1'
 
     implementation "io.dropwizard:dropwizard-core:2.1.5"
+
 }

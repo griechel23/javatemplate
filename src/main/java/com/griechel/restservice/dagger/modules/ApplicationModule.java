@@ -21,4 +21,10 @@ public class ApplicationModule {
     public String getPingResponse() {
         return config.getPingResponse();
     }
+
+    @Provides
+    @Named("endpointBaseUrl")
+    public String getEndpointBaseUrl() {
+        return "https://meteostat.p.rapidapi.com/point/daily";
+    }
 }
