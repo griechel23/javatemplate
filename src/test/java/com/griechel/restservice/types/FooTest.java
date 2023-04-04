@@ -1,4 +1,4 @@
-package com.testdb.types;
+package com.griechel.restservice.types;
 
 import org.junit.Test;
 
