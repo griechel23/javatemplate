@@ -1,0 +1,2 @@
+// A collection of sql commands frequently used
+create table test(id string, foo string, PRIMARY KEY (id));

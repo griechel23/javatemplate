@@ -1,20 +1,21 @@
 package com.griechel.restservice;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.dropwizard.Configuration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.immutables.value.Value;
 
-public class MyServiceConfiguration extends Configuration {
-
-    private String test;
-
-    @JsonProperty
-    public void setPingResponse(String test) {
-        this.test = test;
-    }
+@Value.Immutable
+@JsonDeserialize(as = ImmutableMyServiceConfiguration.class)
+public abstract class MyServiceConfiguration extends Configuration {
 
     @JsonProperty
-    public String getPingResponse() {
-        return test;
-    }
+    public abstract String getPingResponse();
+
+    @JsonProperty
+    public abstract String getDatabaseUrl();
+
+    @Override
+    public abstract String toString();
 }

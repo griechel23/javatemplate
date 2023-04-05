@@ -13,6 +13,8 @@ import com.griechel.restservice.MyServiceConfiguration;
 @Module
 public class ApplicationModule {
 
+    public static final String DB_URL = "dbUrl";
+    public static final String PING_RESPONSE = "pingResponse";
     private final MyServiceConfiguration config;
 
     public ApplicationModule(MyServiceConfiguration config) {
@@ -20,15 +22,20 @@ public class ApplicationModule {
     }
 
     @Provides
-    @Named("pingResponse")
-    public String getPingResponse() {
+    @Named(PING_RESPONSE)
+    String getPingResponse() {
         return config.getPingResponse();
     }
 
     @Provides
-    @Singleton
+    @Named(DB_URL)
+    String getDbUrl() {
+        return config.getDatabaseUrl();
+    }
+
+    @Provides
     @Named("endpointBaseUrl")
-    public String getEndpointBaseUrl() {
+    String getEndpointBaseUrl() {
         return "https://meteostat.p.rapidapi.com/point/daily";
     }
 
