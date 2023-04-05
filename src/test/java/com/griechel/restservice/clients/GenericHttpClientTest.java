@@ -10,9 +10,10 @@ public class GenericHttpClientTest {
 
     @Test
     public void testGet() {
+        String key = System.getenv("WEATHER_KEY");
         String response = client.get("?lat=43.6667&lon=-79.4&start=2020-01-01&end=2020-01-31&alt=184",
             "x-rapidapi-host", "meteostat.p.rapidapi.com",
-            "x-rapidapi-key", "3264402e48msh8b99bdc540b6a68p17240ejsncea4481ccdac");
+            "x-rapidapi-key", key);
         assertNotNull(response);
     }
 }
