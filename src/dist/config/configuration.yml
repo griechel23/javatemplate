@@ -1,1 +1,2 @@
 pingResponse: pong
+databaseUrl: jdbc:sqlite:data.db

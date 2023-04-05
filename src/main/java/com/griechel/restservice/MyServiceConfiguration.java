@@ -13,6 +13,9 @@ public abstract class MyServiceConfiguration extends Configuration {
     @JsonProperty
     public abstract String getPingResponse();
 
+    @JsonProperty
+    public abstract String getDatabaseUrl();
+
     @Override
     public abstract String toString();
 }

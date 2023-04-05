@@ -26,15 +26,14 @@ public class ApplicationModule {
     }
 
     @Provides
+    @Named(DB_URL)
+    String getDbUrl() {
+        return config.getDatabaseUrl();
+    }
+
+    @Provides
     @Named("endpointBaseUrl")
     String getEndpointBaseUrl() {
         return "https://meteostat.p.rapidapi.com/point/daily";
     }
-
-    @Provides
-    @Named(DB_URL)
-    String getDbUrl() {
-        return "jdbc:sqlite:data.db";
-    }
-
 }
