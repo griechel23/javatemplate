@@ -2,7 +2,6 @@ package com.griechel.restservice.persistance;
 
 import com.griechel.restservice.types.Foo;
 import com.griechel.restservice.types.ImmutableFoo;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
