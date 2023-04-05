@@ -9,6 +9,8 @@ import java.net.http.HttpResponse;
 
 import javax.inject.Named;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 public class GenericHttpClient {
 
     private final String endpointBaseUrl;
@@ -17,7 +19,8 @@ public class GenericHttpClient {
         this.endpointBaseUrl = endpointBaseUrl;
     }
 
-    public String get(String urlSuffix, String... headers) {
+    // Returns the body of an HTTP request if it has a 200 response, otherwise throws exception.
+    public String get(String urlSuffix, String... headers) throws JsonProcessingException {
         HttpRequest request;
         try {
             request = HttpRequest.newBuilder()
@@ -28,10 +31,18 @@ public class GenericHttpClient {
         } catch (URISyntaxException e) {
             throw new RuntimeException("Error when creating HTTP request", e);
         }
+
+        HttpResponse<String> response;
         try {
-            return HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString()).body();
+            response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException("Error when executing HTTP get", e);
         }
+
+        if (response.statusCode() != 200) {
+            throw new RuntimeException("Non 200 response " + response.statusCode());
+        }
+
+        return response.body();
     }
 }
