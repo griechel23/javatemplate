@@ -32,7 +32,7 @@ public class DatabaseControllerTest {
 
     @Test
     public void testGetRecord() {
-        Optional<Foo> city = db.getRecord("foo");
-        assertEquals(FOO.getBar(), city.get().getBar());
+        Optional<Foo> foo = db.getRecord("foo");
+        assertEquals(FOO.getBar(), foo.get().getBar());
     }
 }
